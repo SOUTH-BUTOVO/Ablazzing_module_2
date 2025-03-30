@@ -1,9 +1,9 @@
-package org.javaacademy.lesson1.ex2;
+package org.javaacademy.lesson1.ex2.output;
 
 public class Monitor implements Output {
 
     @Override
-    public void output() {
-
+    public void show() {
+        System.out.println("Монитор показывает");
     }
 }

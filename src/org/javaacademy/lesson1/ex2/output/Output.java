@@ -1,5 +1,5 @@
-package org.javaacademy.lesson1.ex2;
+package org.javaacademy.lesson1.ex2.output;
 
 public interface Output {
-    void output();
+    void show();
 }

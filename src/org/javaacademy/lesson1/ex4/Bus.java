@@ -1,4 +1,4 @@
-package org.javaacademy.lesson1.ex3.ex4;
+package org.javaacademy.lesson1.ex4;
 
-public class Bus {
+public class Bus extends Car {
 }

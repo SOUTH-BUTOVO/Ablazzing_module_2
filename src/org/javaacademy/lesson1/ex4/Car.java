@@ -1,4 +1,4 @@
-package org.javaacademy.lesson1.ex3.ex4;
+package org.javaacademy.lesson1.ex4;
 
 public abstract class Car {
     protected boolean isClean = true;

@@ -1,4 +1,4 @@
-package org.javaacademy.lesson1.ex2;
+package org.javaacademy.lesson1.ex2.input;
 
 public class Mouse implements Input {
 

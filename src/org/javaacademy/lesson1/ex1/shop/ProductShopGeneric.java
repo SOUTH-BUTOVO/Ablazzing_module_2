@@ -2,19 +2,19 @@ package org.javaacademy.lesson1.ex1.shop;
 
 import org.javaacademy.lesson1.ex1.product.Product;
 
-public abstract class ProductShop {
-    private Product product;
+public class ProductShopGeneric <T extends Product> {
+    private T product;
 
-    public void buy(Product product) {
+    public void buy(T product) {
         this.product = product;
     }
 
-    public Product sell(double money) {
+    public T sell(double money) {
         if (product == null) {
             throw new RuntimeException("Нет продукта на продажу");
         }
         if (product.getPrice() <= money) {
-            Product temp = product;
+            T temp = product;
             product = null;
             return temp;
         }
