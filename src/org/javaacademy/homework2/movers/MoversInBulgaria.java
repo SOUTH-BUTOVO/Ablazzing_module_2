@@ -30,6 +30,7 @@ public class MoversInBulgaria {
             baggageClaim(luggage);
         }
         System.out.println("Багажа больше нет и лента пустая.");
+        scanner.close();
     }
 
     private void baggageClaim(ArrayBlockingQueue<String> luggage) {

@@ -50,19 +50,20 @@ public class Runner {
         List<String> thursday = List.of("Грех", "Ваниль", "Реберная", "Пянсе", "Фо бо");
         List<String> friday = List.of("Бёрдс", "Реберная", "Андерсон", "Ниппон", "Чифанька");
 
-        ArrayList<String> res = new ArrayList<>(monday);
-        res.retainAll(tuesday);
-        res.retainAll(wednesday);
-        res.retainAll(thursday);
-        res.retainAll(friday);
+        List<String> res = new ArrayList<>(monday);
+//        res.retainAll(tuesday);
+//        res.retainAll(wednesday);
+//        res.retainAll(thursday);
+//        res.retainAll(friday);
+        for (List<String> day : List.of(tuesday, wednesday, thursday, friday)) {
+            res.retainAll(day);
+        }
         System.out.println("Николай Петрович, каждый день был в: " + res);
     }
 
     private static void ex2() {
         List<Integer> temperatureJanuary = List.of(0, -1, -1, -2, -5, -6, -7, -8, -9, -10, -5, -5, -2, -7, -3, -1, -8, -9, -8, -8, -18, -20, -23, -24, -25, -9, -8, -7, -6, -5, -1);
         List<Integer> temperatureFebruary = List.of(-8, -10, -12, -13, -15, -16, -12, -7, -8, -10, -10, -9, -8, -8, -8, -9, -10, -9, -5, -6, -8, -7, -8, -9, -6, -5, -3, -1);
-        int countDayJanuary = temperatureJanuary.size();
-        int countDayFebruary = temperatureFebruary.size();
         List<Integer> totalTemperature = new ArrayList<>();
         totalTemperature.addAll(temperatureJanuary);
         totalTemperature.addAll(temperatureFebruary);
@@ -73,20 +74,20 @@ public class Runner {
         }
 
         System.out.println("Середнесуточная температура воздуха за 2 месяца составила: "
-                + averageAirTemperature / (countDayJanuary + countDayFebruary));
+                + averageAirTemperature / totalTemperature.size());
     }
 
     private static void ex1() {
         Zoo<Dog, Dog, Dog> dogDogDogZoo = new Zoo<>(new Dog(), new Dog(), new Dog());
-        Dog dog = dogDogDogZoo.getDog();
+        Dog dog = dogDogDogZoo.getAnimal2();
         dog.voice();
 
-        Zoo<Tiger, Dog, Bird> tigerDogBirdZoo = new Zoo<>(new Tiger(), new Dog(), new Bird());
-        Tiger tiger = tigerDogBirdZoo.getTiger();
+        Zoo<Tiger, Dog, Bird> zoo = new Zoo<>(new Tiger(), new Dog(), new Bird());
+        Tiger tiger = zoo.getAnimal1();
         tiger.voice();
-        Bird bird = tigerDogBirdZoo.getBird();
+        Bird bird = zoo.getAnimal3();
         bird.fly();
-        Dog dog2 = tigerDogBirdZoo.getDog();
+        Dog dog2 = zoo.getAnimal2();
         dog2.voice();
     }
 }

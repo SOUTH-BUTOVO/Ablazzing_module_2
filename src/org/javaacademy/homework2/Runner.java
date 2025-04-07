@@ -58,5 +58,6 @@ public class Runner {
 
         CustomsInBulgaria customsInBulgaria = new CustomsInBulgaria();
         System.out.println(customsInBulgaria.statisticOfWeight());
+        // {Средний=61, Тяжёлый=364, Лёгкий=38}
     }
 }

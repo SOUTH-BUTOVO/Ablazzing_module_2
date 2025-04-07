@@ -32,9 +32,10 @@ public class CustomsInBulgaria {
             } else if (weight >= Weight.AVERAGE.getWeightLimit()) {
                 luggageWeight.put(AVERAGE.getName(), luggageWeight.getOrDefault(AVERAGE.getName(), 0) + weight);
             } else {
-                luggageWeight.put(LIGHT.getName(), luggageWeight.getOrDefault(LIGHT.getName(), 0) + weight);
+                luggageWeight.merge(LIGHT.getName(), weight, Integer::sum);
             }
         }
+        scanner.close();
         return luggageWeight;
     }
 }
