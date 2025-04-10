@@ -24,10 +24,10 @@ public class Runner {
         NumberChecker isEvenCheck2 = (num) -> num % 2 == 0;
         Predicate<Double> isEvenCheck3 = (num) -> num % 2 == 0;
         Predicate<Double> isEvenCheck4 = NumberChecker::verify;
-        System.out.println("Число положительное - " + isEvenCheck4.test(10d));
+        System.out.printf("Число положительное - %s\n", isEvenCheck4.test(10d) ? "Да" : "Нет");
 
         NumberChecker checkBigger = NumberChecker::verifyBigger;
-        System.out.println("Число больше 10 - " + checkBigger.check(8));
+        System.out.printf("Число больше 10 - %s\n", checkBigger.check(8) ? "Да" : "Нет");
 
         Something met = Something::refMethod;
         met.prt();

@@ -11,8 +11,8 @@ import static org.javaacademy.homework2.customs.Weight.*;
 public class CustomsInBulgaria {
     private static final String DELIMITER = ";";
     private static final int INDEX_WEIGHT = 1;
-    Map<String, Integer> luggageWeight = new HashMap<>();
-    Scanner scanner;
+    private Map<String, Integer> luggageWeight = new HashMap<>();
+    private Scanner scanner;
 
     {
         try {
@@ -35,6 +35,10 @@ public class CustomsInBulgaria {
                 luggageWeight.merge(LIGHT.getName(), weight, Integer::sum);
             }
         }
+//        for (int i = 0; i < values().length; i++) {
+//            Weight category = values()[i];
+//
+//        }
         scanner.close();
         return luggageWeight;
     }
