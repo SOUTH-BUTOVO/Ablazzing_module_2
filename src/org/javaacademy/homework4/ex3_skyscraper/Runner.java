@@ -5,6 +5,8 @@ import java.util.List;
 import static org.javaacademy.homework4.ex3_skyscraper.Skyscrapers.*;
 
 public class Runner {
+    private static final int OVER_A_KILOMETER = 1_000;
+
     public static void main(String[] args) {
         /**
          * Задание №3 - Небоскребы, небоскребы, а я...
@@ -41,11 +43,29 @@ public class Runner {
         List<Skyscraper> skyscraperList = List.of(theWorldTradeCenter, shanghaiTower, burjKhalifa1, burjKhalifa2,
                 pinanInternationalFinancialCenter, abrajAlBayt, lotteWorldCenter);
 
-        System.out.print(skyscraperList);
+        skyscraperList.forEach(System.out::println);
 
-        List<Skyscraper> list = skyscraperList.stream().distinct().toList();
+        List<Skyscraper> resultList = skyscraperList.stream().distinct().toList();
+        System.out.println("---------------------------");
 
+        resultList.forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        resultList.stream().limit(3).forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        resultList.stream().sorted((a, b) -> b.getHeight() - a.getHeight()).limit(1)
+                .forEach(e -> System.out.printf("Самый высокий небоскреб: %s", e));
         System.out.println("\n---------------------------");
-        System.out.println(list);
+
+        boolean hasTallSkyscraper = resultList.stream().anyMatch(e -> e.getHeight() > OVER_A_KILOMETER);
+        if (hasTallSkyscraper) {
+            resultList.stream()
+                    .filter(e -> e.getHeight() > OVER_A_KILOMETER)
+                    .forEach(e -> System.out.printf("Небоскреба выше километра: %s", e));
+        } else {
+            System.out.println("Небоскреба выше километра - нет");
+        }
+        System.out.println("---------------------------");
     }
 }

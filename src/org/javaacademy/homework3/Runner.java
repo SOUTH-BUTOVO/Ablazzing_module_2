@@ -15,6 +15,7 @@ import org.javaacademy.homework3.garden.Garden;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.List;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
@@ -86,30 +87,27 @@ public class Runner {
         //отзыв №2: 2, так себе товар, 100, 25.01.2024 16:37
         //отзыв №4: 4, плохой товар, 100, 25.01.2024 13:37
         //отзыв №3: 3, плохой товар, 100, 25.01.2024 13:37
+
         LocalDateTime dateFeedback1 = LocalDateTime.of(2024, 01, 25, 13, 37);
         LocalDateTime dateFeedback2 = LocalDateTime.of(2024, 01, 25, 16, 37);
         LocalDateTime dateFeedback4 = LocalDateTime.of(2024, 01, 25, 13, 37);
         LocalDateTime dateFeedback3 = LocalDateTime.of(2024, 01, 25, 13, 37);
 
-        Feedback feedback1 = new Feedback(1, "отличный товар", 200, dateFeedback1);
-        Feedback feedback2 = new Feedback(2, "так себе товар", 100, dateFeedback2);
-        Feedback feedback4 = new Feedback(4, "плохой товар", 100, dateFeedback4);
-        Feedback feedback3 = new Feedback(3, "плохой товар", 10, dateFeedback3);
+        List<Feedback> feedback = List.of(
+                new Feedback(1, "отличный товар", 200, dateFeedback1),
+                new Feedback(2, "так себе товар", 100, dateFeedback2),
+                new Feedback(4, "плохой товар", 100, dateFeedback4),
+                new Feedback(3, "плохой товар", 10, dateFeedback3));
 
         Comparator<Feedback> byLikes = (like1, like2) -> like1.getCount() - like2.getCount();
         Comparator<Feedback> byDateTime = Comparator.comparing(Feedback::getDateTime);
         Comparator<Feedback> byId = Comparator.comparingInt(Feedback::getId);
 
-        Comparator<Feedback> comparator = byLikes.thenComparing(byDateTime).thenComparing(byId);
+        Comparator<Feedback> comparator = byLikes.thenComparing(byDateTime).thenComparing(byId).reversed();
 
         TreeSet<Feedback> feedbacks = new TreeSet<>(comparator);
-        feedbacks.add(feedback1);
-        feedbacks.add(feedback2);
-        feedbacks.add(feedback4);
-        feedbacks.add(feedback3);
+        feedbacks.addAll(feedback);
 
-        for (Feedback feedback : feedbacks) {
-            System.out.println(feedback);
-        }
+        feedbacks.forEach(System.out::println);
     }
 }
