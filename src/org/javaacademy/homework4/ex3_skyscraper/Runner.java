@@ -54,16 +54,16 @@ public class Runner {
         resultList.stream().limit(3).forEach(System.out::println);
         System.out.println("---------------------------");
 
-        resultList.stream().sorted((a, b) -> b.getHeight() - a.getHeight()).limit(1)
-                .forEach(e -> System.out.printf("Самый высокий небоскреб: %s", e));
+        resultList.stream().max((a, b) -> b.getHeight() - a.getHeight())
+                .ifPresent(e -> System.out.printf("Самый высокий небоскреб: %s", e));
         System.out.println("\n---------------------------");
 
-        boolean hasTallSkyscraper = resultList.stream().anyMatch(e -> e.getHeight() > OVER_A_KILOMETER);
-        if (hasTallSkyscraper) {
-            resultList.stream()
-                    .filter(e -> e.getHeight() > OVER_A_KILOMETER)
-                    .forEach(e -> System.out.printf("Небоскреба выше километра: %s", e));
-        } else {
+        long count = resultList.stream()
+                .filter(e -> e.getHeight() > OVER_A_KILOMETER)
+                .peek(System.out::println)
+                .count();
+
+        if (count == 0) {
             System.out.println("Небоскреба выше километра - нет");
         }
         System.out.println("---------------------------");

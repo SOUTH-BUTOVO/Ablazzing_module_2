@@ -8,8 +8,8 @@ public enum Skyscrapers {
     AbrajAlBayt("Абрадж аль-Бейт", 601),
     LotteWorldCenter("Всемирный центр Лотте", 555);
 
-    private String name;
-    private int height;
+    private final String name;
+    private final int height;
 
     Skyscrapers(String name, int height) {
         this.name = name;

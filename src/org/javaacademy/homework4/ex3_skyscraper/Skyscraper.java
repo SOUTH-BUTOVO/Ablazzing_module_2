@@ -16,14 +16,6 @@ public class Skyscraper {
     }
 
     @Override
-    public String toString() {
-        return "Skyscraper{" +
-                "name='" + name + '\'' +
-                ", height=" + height +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) return false;
         Skyscraper that = (Skyscraper) object;
@@ -33,5 +25,10 @@ public class Skyscraper {
     @Override
     public int hashCode() {
         return Objects.hash(name, height);
+    }
+
+    @Override
+    public String toString() {
+        return "Skyscraper{" + "name='" + name + '\'' + ", height=" + height + '}';
     }
 }

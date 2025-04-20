@@ -5,12 +5,11 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Runner {
-    final static int START_CAR_NUM = 1;
-    final static int END_CAR_NUM = 50;
-    final static char PREFIX1 = 'а';
-    final static String SUFFIX1 = "ан799";
-    final static char PREFIX2 = 'к';
-    final static String SUFFIX2 = "се178";
+    private final static int START_CAR_NUM = 1;
+    private final static int END_CAR_NUM = 50;
+    private final static String CAR_NUMBER_PATTERN = "А%03dАН799";
+    private final static char PREFIX = 'к';
+    private final static String SUFFIX = "се178";
 
     public static void main(String[] args) {
 
@@ -37,12 +36,12 @@ public class Runner {
 
     private static List<Car> listCars() {
         // Создание машин и номеров и объединение в один Стрим.
-        List<Car> listCar1 = IntStream.rangeClosed(START_CAR_NUM, END_CAR_NUM)
-                .mapToObj(car -> new Car(PREFIX1 + String.format("%03d", car) + SUFFIX1))
+        List<Car> listCar1 = IntStream.range(START_CAR_NUM, END_CAR_NUM)
+                .mapToObj(car -> new Car(String.format(CAR_NUMBER_PATTERN, car)))
                 .toList();
 
         List<Car> listCar2 = IntStream.rangeClosed(START_CAR_NUM, END_CAR_NUM)
-                .mapToObj(car -> new Car(PREFIX2 + String.format("%03d", car) + SUFFIX2))
+                .mapToObj(car -> new Car(PREFIX + String.format("%03d", car) + SUFFIX))
                 .toList();
 
         return Stream.concat(listCar1.stream(), listCar2.stream()).toList();
